@@ -27,6 +27,7 @@
     <button id="font" onclick="addFront()">Add front</button>
     <button onclick="mergeNewDiv()">Add end</button>
     <button id="remove" onclick="remove()">Remove</button>
+    <button id="swap" onclick="swap()">Swap</button>
 
 </body>
 <script>
@@ -41,24 +42,37 @@
         let container = document.getElementById('target')
         container.appendChild(element)
     }
-        function remove() {
-            const mergerItems = document.getElementsByClassName("merger");
-            const len = mergerItems.length;
-            if (len > 0) {
-                const midIndex = Math.floor(len / 2);
-                mergerItems[midIndex].remove();
-            }
+    function remove() {
+        const mergerItems = document.getElementsByClassName("merger");
+        const len = mergerItems.length;
+        if (len > 0) {
+            const midIndex = Math.floor(len / 2);
+            mergerItems[midIndex].remove();
         }
-        function addFront() {
-            let element = document.createElement("div")
-            element.innerHTML = document.getElementById("input-text").value;
-            element.style.color = "orange"
-            element.className = "merger";
-            /* add it to the container */
-            let container = document.getElementById('target')
-            container.insertBefore(element, container.firstChild)
+    }
+    function addFront() {
+        let element = document.createElement("div")
+        element.innerHTML = document.getElementById("input-text").value;
+        element.style.color = "orange"
+        element.className = "merger";
+        /* add it to the container */
+        let container = document.getElementById('target')
+        container.insertBefore(element, container.firstChild)
 
+    }
+    function swap() {
+        const mergerItems = document.getElementsByClassName("merger");
+        let container = document.getElementById('target');
+        let swap1 = Math.floor(Math.random() * mergerItems.length);
+        let swap2 = Math.floor(Math.random() * mergerItems.length);
+        let first = document.getElementsByClassName("merger")[swap1];
+        let second = document.getElementsByClassName("merger")[swap2];
+        if (mergerItems.length > 1) {
+            let tmp = first.innerHTML;
+            first.innerHTML = second.innerHTML;
+            second.innerHTML = tmp;
         }
+    }
 </script>
 
 </html>

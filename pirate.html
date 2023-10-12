@@ -44,7 +44,9 @@
         </div><br>
         <div id="help_id" onclick="help()">Click for help.</div><br>
         <div style="color: royalblue; font-family: Georgia;">Help report</div><br>
+        <button class="btn btn-primary" id="start" onclick="newgame()"> New Game</button>
         <div class="Container" style="padding: 100px;">
+   
 
             <!--5by5 array of div containers-->
             <div class="row mb-2">
@@ -86,52 +88,66 @@
             <!-- rowww - 3-->
             <div class="row mb-2">
                 <div class="col-md">
-                    <img src="treasurehide.jpg" alt="Location 1" id="img10" onclick="check(10)" height="100" width="100">
+                    <img src="treasurehide.jpg" alt="Location 1" id="img10" onclick="check(10)" height="100"
+                        width="100">
                 </div>
                 <div class="col-md">
-                    <img src="treasurehide.jpg" alt="Location 2" id="img11" onclick="check(11)" height="100" width="100">
+                    <img src="treasurehide.jpg" alt="Location 2" id="img11" onclick="check(11)" height="100"
+                        width="100">
                 </div>
                 <div class="col-md">
-                    <img src="treasurehide.jpg" alt="Location 3" id="img12" onclick="check(12)" height="100" width="100">
+                    <img src="treasurehide.jpg" alt="Location 3" id="img12" onclick="check(12)" height="100"
+                        width="100">
                 </div>
                 <div class="col-md">
-                    <img src="treasurehide.jpg" alt="Location 4" id="img13" onclick="check(13)" height="100" width="100">
+                    <img src="treasurehide.jpg" alt="Location 4" id="img13" onclick="check(13)" height="100"
+                        width="100">
                 </div>
                 <div class="col-md">
-                    <img src="treasurehide.jpg" alt="Location 5" id="img14" onclick="check(14)" height="100" width="100">
+                    <img src="treasurehide.jpg" alt="Location 5" id="img14" onclick="check(14)" height="100"
+                        width="100">
                 </div>
             </div>
             <!-- rowww - 4 -->
             <div class="row mb-2">
                 <div class="col-md">
-                    <img src="treasurehide.jpg" alt="Location 1" id="img15" onclick="check(15)" height="100" width="100">
+                    <img src="treasurehide.jpg" alt="Location 1" id="img15" onclick="check(15)" height="100"
+                        width="100">
                 </div>
                 <div class="col-md">
-                    <img src="treasurehide.jpg" alt="Location 2" id="img16" onclick="check(16)" height="100" width="100">
+                    <img src="treasurehide.jpg" alt="Location 2" id="img16" onclick="check(16)" height="100"
+                        width="100">
                 </div>
                 <div class="col-md">
-                    <img src="treasurehide.jpg" alt="Location 3" id="img17" onclick="check(17)" height="100" width="100">
+                    <img src="treasurehide.jpg" alt="Location 3" id="img17" onclick="check(17)" height="100"
+                        width="100">
                 </div>
                 <div class="col-md">
-                    <img src="treasurehide.jpg" alt="Location 4" id="img18" onclick="check(18)" height="100" width="100">
+                    <img src="treasurehide.jpg" alt="Location 4" id="img18" onclick="check(18)" height="100"
+                        width="100">
                 </div>
                 <div class="col-md">
-                    <img src="treasurehide.jpg" alt="Location 5" id="img19" onclick="check(19)" height="100" width="100">
+                    <img src="treasurehide.jpg" alt="Location 5" id="img19" onclick="check(19)" height="100"
+                        width="100">
                 </div>
             </div>
             <!-- rowww - 5 -->
             <div class="row mb-2">
                 <div class="col-md">
-                    <img src="treasurehide.jpg" alt="Location 1" id="img20" onclick="check(20)" height="100" width="100">
+                    <img src="treasurehide.jpg" alt="Location 1" id="img20" onclick="check(20)" height="100"
+                        width="100">
                 </div>
                 <div class="col-md">
-                    <img src="treasurehide.jpg" alt="Location 2" id="im211" onclick="check(21)" height="100" width="100">
+                    <img src="treasurehide.jpg" alt="Location 2" id="im211" onclick="check(21)" height="100"
+                        width="100">
                 </div>
                 <div class="col-md">
-                    <img src="treasurehide.jpg" alt="Location 3" id="img22" onclick="check(22)" height="100" width="100">
+                    <img src="treasurehide.jpg" alt="Location 3" id="img22" onclick="check(22)" height="100"
+                        width="100">
                 </div>
                 <div class="col-md">
-                    <img src="treasurehide.jpg" alt="Location 4" id="img23" onclick="check(23)" height="100" width="100">
+                    <img src="treasurehide.jpg" alt="Location 4" id="img23" onclick="check(23)" height="100"
+                        width="100">
                 </div>
                 <div class="col-md">
                     <img src="treasurehide.jpg" alt="Location 5" id="img4" onclick="check(24)" height="100" width="100">
@@ -211,6 +227,29 @@
 
                     penalty += 2;
                     document.getElementById("penalty").innerText = `Penalty: ${penalty}`;
+                }
+                function newgame() {
+                    let treasureLocation = Math.floor(Math.random() * 24);
+
+                    let trapLocation = Math.floor(Math.random() * 24);
+
+                    document.getElementById("locations").innerText = "Number of locations checked is " + 0;
+
+                    document.getElementById("penalty").innerText = "Penalty is " + 0;
+                    for (i = 0; i < 24; i++) {
+                        if (i == treasureLocation) {
+                            document.getElementById(ids[i]).src = "treasure.jpg";
+
+                        }
+                        else if (i == trapLocation) {
+                            document.getElementById(ids[i]).src = "treasuretraps.jpg"
+                        }
+                        else {
+                            document.getElementById(ids[i]).src = "piratebones.jpg";
+                        }
+
+                    }
+
                 }
 
 
