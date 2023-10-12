@@ -1,44 +1,64 @@
 <!DOCTYPE html>
-    <html> 
-        <head>
-            
-            <meta charset="utf-8">
-            <title>MERGER</title>
-        <link rel="stylesheet" href="sample.css">
-        </head>
-    <style>
-        body{
-            background-color: aqua;
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <title>MERGER</title>
+    <link rel="stylesheet" href="sample.css">
+</head>
+<style>
+
+</style>
+
+
+<body>
+    <h1>Sumanth builds a
+        merger</h1>
+    <input type="text" id="input-text" placeholder="enter here"> <br><br>
+    <div class="flex-container" id="target">
+        <div calss="merger">row item 1</div>
+        <div calss="merger">row item 2</div>
+        <div calss="merger">row item 3</div>
+    </div>
+
+    <p> Press the button to create an new element of type div and then add it to the container.
+    </p>
+    <button id="font" onclick="addFront()">Add front</button>
+    <button onclick="mergeNewDiv()">Add end</button>
+    <button id="remove" onclick="remove()">Remove</button>
+
+</body>
+<script>
+    function mergeNewDiv() {
+        /* make the div and its text */
+        let element = document.createElement("div")
+        element.innerHTML = document.getElementById("input-text").value;
+        element.style.color = "orange"
+        element.className = "merger";
+
+        /* add it to the container */
+        let container = document.getElementById('target')
+        container.appendChild(element)
+    }
+        function remove() {
+            const mergerItems = document.getElementsByClassName("merger");
+            const len = mergerItems.length;
+            if (len > 0) {
+                const midIndex = Math.floor(len / 2);
+                mergerItems[midIndex].remove();
+            }
         }
-    </style>
-    
-    
-    <body>
-        <h1>Sumanth builds a
-            merger</h1>
-            <input type="text" id="input-text" placeholder="enter here"> <br><br>
-            <div class="flex-container" id="target">
-              <div calss="merger">row item 1</div>   
-              <div calss="merger">row item 2</div>  
-              <div calss="merger">row item 3</div>  
-            </div>
-        
-        <p> Press the button to create an new element of type div and then add it to the container.
-            </p>
-            <button onclick="mergeNewDiv()">Add end</button>
-        
-    </body>
-    <script >
-        function mergeNewDiv(){
-            /* make the div and its text */
+        function addFront() {
             let element = document.createElement("div")
             element.innerHTML = document.getElementById("input-text").value;
             element.style.color = "orange"
-            element.className="merger";
-    
+            element.className = "merger";
             /* add it to the container */
             let container = document.getElementById('target')
-            container.appendChild(element)
+            container.insertBefore(element, container.firstChild)
+
         }
-    </script>
-    </html>
+</script>
+
+</html>
