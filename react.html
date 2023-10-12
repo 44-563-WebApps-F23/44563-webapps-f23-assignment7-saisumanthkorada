@@ -11,8 +11,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <style>
-    body
-    {
+    body {
         background-color: rgb(255, 240, 244);
     }
 </style>
@@ -22,8 +21,10 @@
 
     <div id="target">Your time: </div>
     <div id="countdown">Count: </div>
-    <button  class="btn btn-primary" id="startButton" onclick="startTime()" style="color: rgb(86, 116, 27);">Start Timer</button>
-    <button class="btn btn-primary" id="reactButton" onclick="recordTime()" style="color:rgb(0, 255, 166)">React</button>
+    <button class="btn btn-primary" id="startButton" onclick="startTime()" style="color: rgb(86, 116, 27);">Start
+        Timer</button>
+    <button class="btn btn-primary" id="reactButton" onclick="recordTime()"
+        style="color:rgb(0, 255, 166)">React</button>
 
     <script>
 
@@ -31,7 +32,35 @@
             reactTime = Date.now();
             console.log(reactTime);
         }
-        
+        function startTime() {
+            for (let i = 0; i < 9; i++) {
+                setTimeout(() => {
+                    // alert(`working`);
+                    //console.log(`Value of i is ${i}`);
+                    // i * 1000 milliseconds delay
+                    const countdownElement = document.getElementById("countdown");
+                    countdownElement.innerHTML = i;
+                }, (8 - i) * 1000);
+            }
+
+
+            setTimeout(() => {
+                if (typeof reactTime === "undefined") {
+                    // User was too slow
+                    document.getElementById("target").innerHTML = "Too Slow";
+                } else {
+                    // Calculate the reaction time
+                    const endTime = Date.now();
+                    const elapsed = endTime - reactTime;
+                    document.getElementById("target").innerHTML = "Time was " + elapsed + " ms";
+                }
+            }, 8000);
+
+
+
+        }
+        document.getElementById("startTimer").addEventListener("click", startTime);
+
 
     </script>
 </body>
